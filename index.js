@@ -132,6 +132,7 @@ function countByRating(movies) {
 
   for(let i = 0; i < movies.length; i++){
     console.log(movies[i].rated)
+    if(rating){}
 
 
     movieRatingCount[movies[i].rated] = movieRatingCount[movies[i].rated] ? movieRatingCount[movies[i].rated] + 1 : 1;
