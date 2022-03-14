@@ -101,7 +101,7 @@ function getAverageIMDBRating(movies) {
   //loop through the movies array
   for(let i = 0; i < movies.length; i++){
     //create a variable called num to represent movies iteration imdbRating as a number 
-    let num = Numbers(movies[i].imdbRating);
+    let num = Number(movies[i].imdbRating);
            //console.log(movies[i].imdbRating ) 
            console.log(num)
         averageRating += num 
@@ -109,7 +109,7 @@ function getAverageIMDBRating(movies) {
         //console.log(averageRating.toFixed(2))
         //console.log(Math.floor(averageRating))
   }
-    return Math.floor((averageRating / movies.length)); 
+    return ((averageRating / movies.length)); 
 }
 
 /**
@@ -131,8 +131,8 @@ function countByRating(movies) {
   movieRatingCount = {}
 
   for(let i = 0; i < movies.length; i++){
-    console.log(movies[i].rated)
-    if(rating){}
+    // console.log(movies[i].rated)
+    // if(rating){}
 
 
     movieRatingCount[movies[i].rated] = movieRatingCount[movies[i].rated] ? movieRatingCount[movies[i].rated] + 1 : 1;
@@ -159,13 +159,14 @@ function findById(movies, id) {
   if(movies.length === 0 || id !== id){
     return null;
   }
-    for(let i = 0; i <movies.length; i++){
+    for(let i = 0; i < movies.length; i++){
       if(movies[i].imdbID === id){
         return movies[i];
-      } else {
-        return null;
-      }
+      } 
+        
+      
     }
+    return null;
 
 }
 
@@ -197,17 +198,24 @@ function filterByGenre(movies, genre) {
     letGenreMatch = [];
 
     for(let i = 0; i < movies.length;i++ ){
-      if(movies[i].genre === genre){
+      if(movies[i].genre.toUpperCase().includes(genre.toUpperCase())){
         
-        letGenrematch.push(movies[i].title);
+        letGenreMatch.push(movies[i]);
     
-      } else {
-        return noMatch;
-      }
+      } 
+        
+      
     
          
     }
-      //return letGenreMatch; 
+    // if (letGenreMatch.length ===0){
+    //   return noMatch
+    // }
+    // else{
+    //   return letGenreMatch
+    // }
+    // return noMatch;
+      return letGenreMatch; 
 }
 
 /**
